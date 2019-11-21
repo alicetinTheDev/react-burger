@@ -12,7 +12,7 @@ mapIngredients(){
           for (let i = 0; i < ingredients[ ingKey ]; i++)
             ingredientsArray.push(<BurgerIngredient key={ ingKey + i } type={ ingKey }/>)
         });
-       
+        
         return ingredientsArray.length > 0 ? ingredientsArray : <p>Please add some ingredients!</p>;
       }
 

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 
-import Aux from "../../hoc/Aux";
+import Wrapper from "../../hoc/Wrapper";
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 
 const INGREDIENT_PRICES = {
-    salad: 0.5,
-    cheese: 0.7,
-    meat: 1.3,
-    bacon: 0.7
+    curly: 0.5,
+    tomato: 0.7,
+    cheese: 0.7,  
+    meat: 1.3      
 }
 
 class BurgerBuilder extends Component {
@@ -40,15 +40,13 @@ class BurgerBuilder extends Component {
   //   this.setState({totalPrice: newPrice, ingredients: updatedIngredients})
   // }
 
+  // More effective and clean way to do the same thing
   addIngredientHandler = (type) => {
     let {ingredients, totalPrice} = this.state;
     ingredients[type] += 1;
     totalPrice += INGREDIENT_PRICES[type];
     this.setState({ingredients, totalPrice});
   }; 
-
-  // removeIngredientHandler = (type) => {    
-  // }
 
   removeIngredientHandler = (type) => {
     let {ingredients, totalPrice} = this.state;
@@ -61,12 +59,24 @@ class BurgerBuilder extends Component {
   };
 
   render() {
+    const disabledInfo = {
+        ...this.state.ingredients
+    };
+
+    for(let key in disabledInfo){
+        // is it reduceable ?
+        disabledInfo[key] = disabledInfo[key] <= 0
+    };
+
     return (
-      <Aux>
+      <Wrapper>
         <Burger ingredients={this.state.ingredients}/>
         <BuildControls 
-            ingredientAdded={this.addIngredientHandler} />
-      </Aux>
+            ingredientAdded={this.addIngredientHandler} 
+            ingredientRemoved={this.removeIngredientHandler}
+            disabled={disabledInfo}
+            price={this.state.totalPrice} />
+      </Wrapper>
     );
   }
 }
