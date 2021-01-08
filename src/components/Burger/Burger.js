@@ -17,7 +17,7 @@ mapIngredients(){
       }
 
     render(){
-        return (
+        return ( 
             <div className={ classes.Burger }>
               <BurgerIngredient type='bread-top'/>
                 { this.mapIngredients() }
