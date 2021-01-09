@@ -18,12 +18,12 @@
     }
 }
 
-/* Shift Right */
+/* Shift Right Animation*/
 .Open {
     transform: translateX(0);
 }
 
-/* Shift left */
+/* Shift left Animation*/
 .Close {
     transform: translateY(-100%);
 }

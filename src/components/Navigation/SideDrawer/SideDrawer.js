@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Logo from '../../Logo/Logo'
-import NavigationItems from '../NavigationItems/NavigationItems' 
+import Logo from '../../Logo/Logo';
+import NavigationItems from '../NavigationItems/NavigationItems'; 
 import classes from './SideDrawer.module.css';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Wrapper from '../../../hoc/Wrapper';
 
 const sideDrawer = (props) => {
-    const attachedClasses = [classes.SideDrawer, classes.Close];    
+    let attachedClasses = [classes.SideDrawer, classes.Close];    
     
     if (props.open) {
         attachedClasses = [classes.SideDrawer, classes.Open];
